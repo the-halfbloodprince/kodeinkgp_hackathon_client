@@ -1,25 +1,38 @@
 import React from 'react'
 import { Table,Grid,Col } from '@mantine/core';
+import { useSelector } from 'react-redux';
 
 
-const BUY_VALS = [
-	{ quantity: 6, price:100},
-	{ quantity: 7, price:100},
-	// { quantity: 8, price:100},
-	
-	
-];
 
 const OrderBook = () => {
 
 
-    const rows = BUY_VALS.map((element) => (
-			<tr key={element.quantity}>
-				<td>{element.quantity}</td>
-				<td>{element.price}</td>
+    // const rows = BUY_VALS.map((element) => (
+	// 		<tr key={element.quantity}>
+	// 			<td>{element.quantity}</td>
+	// 			<td>{element.price}</td>
 				
-			</tr>
-		));
+	// 		</tr>
+	// ));
+	const data = useSelector((state) => state.appData.data)
+	console.log(typeof data)
+	
+	
+	const brows = data['pending_buy_orders'].slice(0, 3).map((element) => (
+		// console.log('element')
+		// console.log(element)
+		<tr key={element['id']}>
+			<td>{element['quantity']}</td>
+			<td>{element['price']}</td>
+		</tr>
+	));
+
+	const srows = data['pending_sell_orders'].slice(0, 3).map((element) => (
+		<tr key={element['id']}>
+			<td>{element['quantity']}</td>
+			<td>{element['price']}</td>
+		</tr>
+	));
   return (
 		<div className='font-poppins  font-bold rounded-3xl bg-gray-800 w-3/4 p-8 h-full'>
 				<h6 className = 'text-2xl font-medium'>Order Book</h6>
@@ -34,7 +47,7 @@ const OrderBook = () => {
 								<th>Price</th>
 							</tr>
 						</thead>
-						<tbody className = 'font-medium'>{rows}</tbody>
+						<tbody className = 'font-medium'>{brows}</tbody>
 					  </Table>
 					</div>
 				</Col>
@@ -47,7 +60,7 @@ const OrderBook = () => {
 								<th>Price</th>
 							</tr>
 						</thead>
-						<tbody className = 'font-medium'>{rows}</tbody>
+						<tbody className = 'font-medium'>{srows}</tbody>
 					</Table>
 			  </Col>
 			  <Col span={6}>

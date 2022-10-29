@@ -1,7 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  data: {}
+  data: {
+    'user_portfolios': [],
+    'market_prices': [],
+    'pending_buy_orders': [],
+    'pending_sell_orders': [],
+    'transactions': [],
+  }
 };
 
 export const appDataSlice = createSlice({

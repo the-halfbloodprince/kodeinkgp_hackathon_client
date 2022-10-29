@@ -1,19 +1,45 @@
 import React from 'react';
 import { Text,Table, Grid, Col } from '@mantine/core';
 
-const BUY_VALS = [
-	{ quantity: 6, price: 100 },
-	{ quantity: 7, price: 100 },
-	// { quantity: 8, price:100},
-];
+import { useSelector } from 'react-redux';
+
+// const BUY_VALS = [
+// 	{ quantity: 6, price: 100 },
+// 	{ quantity: 7, price: 100 },
+// 	// { quantity: 8, price:100},
+// ];
 
 const OrderBook = () => {
-	const rows = BUY_VALS.map((element) => (
-		<tr key={element.quantity}>
+
+	const appData = useSelector(state => state.appData.data)
+
+	console.log('appData')
+	console.log(appData['pending_buy_orders'])
+
+	// const browsTotal = 
+
+	const brows = appData['pending_buy_orders'].map((element) => {
+
+		console.log(element)
+
+		return (<tr key={element.id}>
 			<td><Text align="left">{element.quantity}</Text></td>
 			<td><Text align="right">{element.price}</Text></td>
-		</tr>
-	));
+		</tr>)
+
+})
+
+	const srows = appData['pending_sell_orders'].map((element) => {
+
+		console.log(element)
+
+		return (<tr key={element.id}>
+			<td><Text align="left">{element.quantity}</Text></td>
+			<td><Text align="right">{element.price}</Text></td>
+		</tr>)
+
+})
+
 	return (
 		<div className="mx-40 my-8 font-poppins  font-bold rounded-3xl bg-gray-800 w-4/4 p-5 ">
 			
@@ -30,7 +56,7 @@ const OrderBook = () => {
 									<th><Text align="right">Price</Text></th>
 								</tr>
 							</thead>
-							<tbody className="font-medium">{rows}</tbody>
+							<tbody className="font-medium">{brows}</tbody>
 						</Table>
 					
 				</Col>
@@ -43,7 +69,7 @@ const OrderBook = () => {
 									<th><Text align="right">Price</Text></th>
 							</tr>
 						</thead>
-						<tbody className="font-medium">{rows}</tbody>
+						<tbody className="font-medium">{srows}</tbody>
 					</Table>
 				</Col>
 				<Col span={5}>

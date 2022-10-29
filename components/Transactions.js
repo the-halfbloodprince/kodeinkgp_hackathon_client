@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import { Drawer, Button, Group ,Table} from '@mantine/core';
 import UserPortFolio from './UserPortFolio';
-
+import { useSelector } from 'react-redux';
 
 const TRANS_VALS = [
 	{ buyer: 'User1', seller: 'User1', quantity: 100, price: 5000, time: '10:20', },
@@ -14,18 +14,24 @@ const TRANS_VALS = [
 
 const Transactions = ({ toShow }) => {
 
-    const [opened, setOpened] = useState(false);
+	const appData = useSelector(state => state.appData.data)
+	const transactions = appData['transactions']
 
-    const rows = TRANS_VALS.map((element) => (
-			<tr key={element.buyer}>
+	// console.log(transactions.length)
+	
+    const [opened, setOpened] = useState(false);
+	
+    const rows = transactions.map((element) => (
+			<tr key={element.id}>
 				<td>{element.buyer}</td>
 				<td>{element.seller}</td>
 				<td>{element.quantity}</td>
 				<td>{element.price}</td>
-				<td>{element.time}</td>
+				{/* <td>{element.time}</td> */}
 			</tr>
 		));
-
+		console.log(rows.length)
+		
   return (
 		<div>
 			<Drawer position='right'
@@ -45,7 +51,7 @@ const Transactions = ({ toShow }) => {
 									<th>Seller</th>
 									<th>Quantity</th>
 									<th>Price</th>
-									<th>Time</th>
+									{/* <th>Time</th> */}
 								</tr>
 							</thead>
 							<tbody>{rows}</tbody>

@@ -15,7 +15,7 @@ const NavBar = () => {
   return (
     <div className='w-full px-48 h-20 mb-4 mt-4 flex justify-between items-center font-mono '>
         <div className='text-white text-3xl'>
-            KK Bhoi's App
+            Akatsuki
         </div>
         <div className='flex space-x-10 items-center text-lg'>
             {/* dowpdown */}
@@ -34,7 +34,7 @@ const NavBar = () => {
                 {/* <div className='px-4 py-2 rounded-md transition duration-500 hover:bg-[#ffffff22] grid items-center'>
                     Transactions
                 </div> */}
-                <Transactions toShow="Transactions" />
+                <Transactions toShow="History" />
             {/* </Link> */}
             {/* <Link href="/notifications">  */}
                 {/* <div className='px-4 text-2xl py-2 rounded-md transition duration-500 hover:bg-[#ffffff22] grid items-center'> */}

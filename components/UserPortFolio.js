@@ -1,19 +1,14 @@
 import React from 'react'
 import { Table } from '@mantine/core';
+import { useSelector } from 'react-redux';
 
-const USER_VALS = [
-	{ name: "User1", stock: 100,fiat:5000 },
-	{ name: "User2", stock: 100,fiat:5000 },
-	{ name: "User3", stock: 100,fiat:5000 },
-	{ name: "User4", stock: 100,fiat:5000 },
-	
-];
+
 const UserPortFolio = () => {
-
-    const rows = USER_VALS.map((element) => (
-			<tr key={element.name}>
-				<td>{element.name}</td>
-				<td>{element.stock}</td>
+	const data = useSelector((state) => state.appData.data);
+    const rows = data['user_portfolios'].slice(0,4).map((element) => (
+			<tr key={element.id}>
+				<td>{element.user_name}</td>
+				<td>{element.stocks}</td>
 				<td>{element.fiat}</td>
 			</tr>
 		));

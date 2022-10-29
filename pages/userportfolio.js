@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table,Text } from '@mantine/core';
+import { useSelector } from 'react-redux';
 
 const USER_VALS = [
 	{ name: 'User1', stock: 100, fiat: 5000 },
@@ -15,15 +16,16 @@ const USER_VALS = [
 ];
 const UserPortFolio = () => {
 
+	const appData = useSelector(state => state.appData.data)
 
-
-	const rows = USER_VALS.map((element) => (
-		<tr key={element.name}>
-			<td>{element.name}</td>
-			<td>{element.stock}</td>
+	const rows = appData['user_portfolios'].map((element) => {
+		console.log(element)
+		return (<tr key={element.id}>
+			<td>{element.user_name}</td>
+			<td>{element.stocks}</td>
 			<td>{element.fiat}</td>
-		</tr>
-	));
+		</tr>)
+});
 	return (
 		<div className="font-poppins rounded-3xl bg-gray-800 p-5 mx-40 my-8 text-center justify-center">
 			<h6 className="text-3xl font-medium mb-10 text-center">User Portfolio</h6>
