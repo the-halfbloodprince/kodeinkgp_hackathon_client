@@ -14,6 +14,9 @@ const USER_VALS = [
 	{ name: 'User10', stock: 100, fiat: 5000 },
 ];
 const UserPortFolio = () => {
+
+
+
 	const rows = USER_VALS.map((element) => (
 		<tr key={element.name}>
 			<td>{element.name}</td>
@@ -22,8 +25,8 @@ const UserPortFolio = () => {
 		</tr>
 	));
 	return (
-		<div className="font-poppins rounded-3xl bg-gray-800 p-5 mx-24 my-8 text-center justify-center">
-			<h6 className="text-2xl font-medium text-left">User Portfolio</h6>
+		<div className="font-poppins rounded-3xl bg-gray-800 p-5 mx-40 my-8 text-center justify-center">
+			<h6 className="text-3xl font-medium mb-10 text-center">User Portfolio</h6>
 			<div className='flex justify-center'>
 			<Table highlightOnHover verticalSpacing ="md">
 				<thead>

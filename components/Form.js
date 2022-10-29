@@ -33,6 +33,7 @@ function Form() {
 							{ value: 'buyLabel', label: 'Buy' },
 							{ value: 'sellLabel', label: 'Sell' },
 						]}
+						
 					/>
 					<Select
 						label=""
@@ -69,3 +70,10 @@ function Form() {
 }
 
 export default Form;
+
+
+{/* <form onSubmit={
+	form.onSubmit((values) => console.log(values))}>
+				
+					
+			</form> */}

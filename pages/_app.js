@@ -2,6 +2,7 @@ import { MantineProvider } from '@mantine/core';
 import '../styles/globals.css'
 import { Provider } from "react-redux";
 import { store } from "../store";
+import NavBar from '../components/NavBar';
 
 function MyApp({ Component, pageProps }) {
   
@@ -12,6 +13,7 @@ function MyApp({ Component, pageProps }) {
         withNormalizeCSS
         theme={{ colorScheme: "dark" }}
       >
+        <NavBar />
         <Component {...pageProps} />
       </MantineProvider>
     </Provider>

@@ -1,25 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  portfolios: [],
+  data: {}
 };
 
-export const userPortfoliosSlice = createSlice({
-  name: "userPortfolios",
+export const appDataSlice = createSlice({
+  name: "appData",
   initialState,
   reducers: {
-    setUserPortfolios: (state, action) => {
-      // console.log((typeof action.payload) != 'object')
-        // if (typeof action.payload != )
-        // console.log(action.payload)
-        state.portfolios = action.payload
+    setData: (state, action) => {
+      console.log('recieved payload: ')
+      console.log(action.payload)
+        state.data = action.payload
     }
   },
 });
 
-export const { setUserPortfolios } = userPortfoliosSlice.actions;
+export const { setData } = appDataSlice.actions;
 
-export default userPortfoliosSlice.reducer;
+export default appDataSlice.reducer;
 
 {/* <Button onClick={() => {
           dispatch(setUserPortfolios([

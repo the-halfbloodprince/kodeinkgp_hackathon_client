@@ -15,12 +15,12 @@ const OrderBook = () => {
 		</tr>
 	));
 	return (
-		<div className="mx-8 my-8 font-poppins  font-bold rounded-3xl bg-gray-800 w-4/4 p-5 ">
+		<div className="mx-40 my-8 font-poppins  font-bold rounded-3xl bg-gray-800 w-4/4 p-5 ">
 			
-			<h6 className="text-2xl font-medium">Order Book</h6>
-			<Grid>
+			<h6 className="text-3xl font-medium mb-10 text-center">Order Book</h6>
+			<Grid className='justify-evenly'>
 				
-				<Col span={6}>
+				<Col span={5}>
 					<h6 className="text-base font-bold text-green ml-2 mt-2 mb-2">Buy</h6>
 					
 						<Table horizontalSpacing="xs">
@@ -34,8 +34,8 @@ const OrderBook = () => {
 						</Table>
 					
 				</Col>
-				<Col span={6}>
-					<h6 className="text-base font-bold text-red ml-2 mt-2 mb-2">Sell</h6>
+				<Col span={5}>
+					<h6 className="text-base font-bold text-red mt-2 mb-2 ml-2">Sell</h6>
 					<Table horizontalSpacing="xs">
 						<thead>
 							<tr className="text-base">
@@ -46,7 +46,7 @@ const OrderBook = () => {
 						<tbody className="font-medium">{rows}</tbody>
 					</Table>
 				</Col>
-				<Col span={6}>
+				<Col span={5}>
 					<Table horizontalSpacing="xs" verticalSpacing="xs" >
 						<thead>
 							<tr className="text-base text-green">
@@ -56,7 +56,7 @@ const OrderBook = () => {
 						</thead>
 					</Table>
 				</Col>
-				<Col span={6}>
+				<Col span={5} >
 					<Table horizontalSpacing="xs" verticalSpacing="xs">
 						<thead>
 						<tr className="text-base text-green">

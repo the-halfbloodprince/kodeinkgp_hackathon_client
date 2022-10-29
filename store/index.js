@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit"
-import userPortfolioReducer from "./userPortfolioSlice"
+import appDataReducer from "./appDataSlice"
+import currentPageReducer from "./appDataSlice"
 
 export const store = configureStore({
   reducer: {
-    userPortfolios: userPortfolioReducer
+    appData: appDataReducer,
+    // currentPage: currentPageReducer
   },
 })

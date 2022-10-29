@@ -7,30 +7,35 @@ import Transactions from '../components/Transactions'
 import Graph from '../components/Graph'
 import { useSelector, useDispatch } from 'react-redux'
 import PlotlyGraph from '../components/PlotlyGraph'
-import { setUserPortfolios } from '../store/userPortfolioSlice'
+import { setData } from '../store/appDataSlice'
 import { useEffect } from 'react'
 import NavBar from '../components/NavBar'
+import axios from 'axios'
+import  { IoNotificationsSharp as NotificationIcon } from 'react-icons/io5'
+import { useState } from 'react'
 
 export default function Home() {
 
-  const userPortfolios = useSelector((state) => state.userPortfolios.portfolios)
+  const appData = useSelector((state) => state.appData)
   const dispatch = useDispatch()
+
+  const [error, setError] = useState(false)
   
-  const setData = (data) => {
+  const setDataInStore = (data) => {
     // set the data
-     dispatch(() => setUserPortfolios(data['user_portfolios']))
+    console.log('Setting data')
+    console.log(data)
+    dispatch(() => setData(data))
   }
 
   useEffect(() => {
-    const getAllDataURL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/get-all-data`
-    fetch(getAllDataURL)
-                .then(res => res.json())
-                .then(data => setData(data))
-                .catch((err) => console.log(err))
+    console.log('use effect')
+    axios
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/get-all-data`)
+      .then(res => setData(res.data))
   }, [])
-  
-
-
+  console.log("njk")
+  console.log(appData)
   return (
     <div className="">
       <Head>
@@ -39,33 +44,33 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className='min-h-screen'>
         
-        <NavBar />
+        {/* <NavBar /> */}
 
         <Grid className="">
-          <Col span={6}>
+          {/* <Col span={6}>
             
           </Col>
-          <Col span={3} className="flex justify-center mt-4">
+          <Col span={3} className="flex justify-end mt-4">
 
           <Transactions name="Transactions" />
           </Col>
-          <Col span={3} className="flex justify-center mt-4">
+          <Col span={3} className="flex justify-start mt-4">
 
             <Transactions name="Notifications" />
-          </Col>
-          <Col span={6} className="flex justify-center h-2/5">
+          </Col> */}
+          <Col span={6} className="flex justify-end h-2/5">
             <Graph />
           </Col>
 
-          <Col span={6} className="flex justify-center h-2/5">
+          <Col span={6} className="flex justify-start h-2/5">
             <OrderBook />
           </Col>
-          <Col span={6} className="flex justify-center h-2/5">
+          <Col span={6} className="flex justify-end h-2/5">
             <UserPortFolio />
           </Col>
-          <Col span={6} className="flex justify-center h-2/5">
+          <Col span={6} className="flex justify-start h-2/5">
             <Form></Form>
           </Col>
         </Grid>

@@ -12,7 +12,7 @@ const TRANS_VALS = [
 	
 ];
 
-const Transactions = ({ name }) => {
+const Transactions = ({ toShow }) => {
 
     const [opened, setOpened] = useState(false);
 
@@ -55,7 +55,7 @@ const Transactions = ({ name }) => {
 			</Drawer>
 
 			<Group position="right">
-				<Button className = 'bg-[#0046bb]' onClick={() => setOpened(true)} > { name } </Button>
+				<Button className = 'bg-[#ffffff22]' color="violet" onClick={() => setOpened(true)} > { toShow } </Button>
 			</Group>
 		</div>
 	);
