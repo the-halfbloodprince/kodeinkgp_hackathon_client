@@ -1,4 +1,4 @@
-import { TextInput, Checkbox, Button, Group, Box,Select,Stack ,Space} from '@mantine/core';
+import { TextInput, Checkbox, Button, Group, Box,Select,Stack ,Space, MantineProvider} from '@mantine/core';
 import { useForm } from '@mantine/form';
 
 function Form() {
@@ -17,13 +17,13 @@ function Form() {
 		<div className='font-poppins text-2xl font-bold rounded-3xl bg-gray-800 w-3/4 p-5'>
 		<Box sx={{ maxWidth: 300 }} mx="auto">
 			<form onSubmit={form.onSubmit((values) => console.log(values))}>
-				<Stack
+				<Stack spacing = 'xs'
 					sx={(theme) => ({
 						backgroundColor:
 							theme.colorScheme === 'dark'
-								? theme.colors.gray[7]
+								? '#00000'
 								: theme.colors.gray[0],
-						height: 245,
+						height: 220,
 					})}
 				>
 					<Select
@@ -56,9 +56,11 @@ function Form() {
 						<TextInput placeholder="At price" label="" withAsterisk />
 					</div>
 
+					<MantineProvider theme = {{primaryShade:{dark:8}}}>
 					<Group position='center'>
-						<Button type="submit" color='cyan'>Submit</Button>
+						<Button type="submit" variant = "filled" color = "blue" fullWidth className = 'bg-[#0c8ce9]'>Place Order</Button>
 					</Group>
+					</MantineProvider>
 				</Stack>
 			</form>
 			</Box>

@@ -8,40 +8,11 @@ const TRANS_VALS = [
 	{ buyer: 'User1', seller: 'User1', quantity: 100, price: 5000, time: '10:20', },
 	{ buyer: 'User2', seller: 'User2', quantity: 100, price: 5000, time: '10:20', },
 	{ buyer: 'User3', seller: 'User3', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User4', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'Userlast', seller: 'User4', quantity: 100, price: 5000, time: '10:20', },
+	
+	
 ];
 
-const Transactions = () => {
+const Transactions = ({ name }) => {
 
     const [opened, setOpened] = useState(false);
 
@@ -57,7 +28,7 @@ const Transactions = () => {
 
   return (
 		<div>
-			<Drawer
+			<Drawer position='right'
 				className="overflow-scroll"
 				opened={opened}
 				onClose={() => setOpened(false)}
@@ -83,8 +54,8 @@ const Transactions = () => {
 				}
 			</Drawer>
 
-			<Group position="center">
-				<Button onClick={() => setOpened(true)}>Open Drawer</Button>
+			<Group position="right">
+				<Button className = 'bg-[#0046bb]' onClick={() => setOpened(true)} > { name } </Button>
 			</Group>
 		</div>
 	);

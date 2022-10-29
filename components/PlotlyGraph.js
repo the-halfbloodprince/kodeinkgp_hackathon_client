@@ -20,7 +20,7 @@ const PlotlyGraph = () => {
     <div className="">
       <Plot
                 data={data}
-                layout={{paper_bgcolor:'#9168e9',plot_bgcolor:'#9168e9',margin:{l:'0',r:'0',t:'0','b':'35'},width:'490',height:'200'}}
+                layout={{paper_bgcolor:'#9168e9',plot_bgcolor:'#9168e9',margin:{l:'0',r:'0',t:'0','b':'35'},width:'400',height:'200',modebar:{remove:[]}}}
                 
         
       />

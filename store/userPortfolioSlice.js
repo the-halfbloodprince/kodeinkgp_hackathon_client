@@ -1,24 +1,45 @@
-// import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
-// const initialState = {
-//   portfolio: [],
-// };
+const initialState = {
+  portfolios: [],
+};
 
-// export const counterSlice = createSlice({
-//   name: "portfolio",
-//   initialState,
-//   reducers: {
-//     addUser: (state) => {
-//       // Redux Toolkit allows us to write "mutating" logic in reducers. It
-//       // doesn't actually mutate the state because it uses the Immer library,
-//       // which detects changes to a "draft state" and produces a brand new
-//       // immutable state based off those changes
-//       state.portfolio.add;
-//     },
-//   },
-// });
+export const userPortfoliosSlice = createSlice({
+  name: "userPortfolios",
+  initialState,
+  reducers: {
+    setUserPortfolios: (state, action) => {
+      // console.log((typeof action.payload) != 'object')
+        // if (typeof action.payload != )
+        // console.log(action.payload)
+        state.portfolios = action.payload
+    }
+  },
+});
 
-// Action creators are generated for each case reducer function
-// export const {  } = counterSlice.actions;
+export const { setUserPortfolios } = userPortfoliosSlice.actions;
 
-// export default counterSlice.reducer;
+export default userPortfoliosSlice.reducer;
+
+{/* <Button onClick={() => {
+          dispatch(setUserPortfolios([
+            {
+              user_name: 'A',
+              stocks: 100,
+              fiat: 300
+            },
+            {
+                user_name: 'B',
+                stocks: 190,
+                fiat: 307
+            }
+      ])      
+      )
+      
+      console.log(userPortfolios)
+
+      
+      }}>Set users</Button>
+      {
+        userPortfolios.length
+      } */}

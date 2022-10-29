@@ -1,11 +1,12 @@
 import { MantineProvider } from '@mantine/core';
 import '../styles/globals.css'
 import { Provider } from "react-redux";
-import store from "../store/index";
+import { store } from "../store";
 
 function MyApp({ Component, pageProps }) {
+  
   return (
-    // <Provider store={store}>
+    <Provider store={store}>
       <MantineProvider
         withGlobalStyles
         withNormalizeCSS
@@ -13,7 +14,7 @@ function MyApp({ Component, pageProps }) {
       >
         <Component {...pageProps} />
       </MantineProvider>
-    // </Provider>
+    </Provider>
   );
 }
 

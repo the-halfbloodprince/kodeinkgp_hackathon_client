@@ -5,8 +5,7 @@ import { Table,Grid,Col } from '@mantine/core';
 const BUY_VALS = [
 	{ quantity: 6, price:100},
 	{ quantity: 7, price:100},
-	{ quantity: 7, price:100},
-	{ quantity: 7, price:100},
+	// { quantity: 8, price:100},
 	
 	
 ];
@@ -22,44 +21,55 @@ const OrderBook = () => {
 			</tr>
 		));
   return (
-		<div className='font-poppins text-2xl font-bold rounded-3xl bg-gray-800 w-3/4 p-5'>
+		<div className='font-poppins  font-bold rounded-3xl bg-gray-800 w-3/4 p-5'>
+				<h6 className = 'text-2xl font-medium'>Order Book</h6>
 			<Grid>
 				<Col span={6}>
-				  <h6>Buy</h6>
-				  <div className='h-2/4 overflow-hidden'>
-					<Table fontSize="lg" horizontalSpacing='xs'>
+				  <h6 className = 'text-base font-bold text-cyanBlue'>Buy</h6>
+				  <div className=''>
+					<Table  horizontalSpacing='xs'>
 						<thead>
-							<tr>
+							<tr className = 'text-base'>
 								<th>Quantity</th>
 								<th>Price</th>
 							</tr>
 						</thead>
-						<tbody>{rows}</tbody>
+						<tbody className = 'font-medium'>{rows}</tbody>
 					  </Table>
 					</div>
 				</Col>
 				<Col span={6}>
-					<h4>Sell</h4>
-					<Table fontSize="lg">
+					<h6 className = 'text-base font-bold text-purple'>Sell</h6>
+					<Table horizontalSpacing='xs'>
 						<thead>
-							<tr>
+							<tr className = 'text-base'>
 								<th>Quantity</th>
 								<th>Price</th>
 							</tr>
 						</thead>
-						<tbody>{rows}</tbody>
+						<tbody className = 'font-medium'>{rows}</tbody>
 					</Table>
 			  </Col>
 			  <Col span={6}>
 					
-					<Table fontSize="lg" horizontalSpacing='xs'>
+					<Table horizontalSpacing='xs' verticalSpacing='xs'>
 						<thead>
-							<tr>
+							<tr className = 'text-base'>
 								<th>Total</th>
-								<th>Price</th>
+								<th>100000</th>
 							</tr>
 						</thead>
-						{/* <tbody>{}</tbody> */}
+					</Table>
+			  </Col>
+			  <Col span={6}>
+					
+					<Table horizontalSpacing='xs' verticalSpacing='xs'>
+						<thead>
+							<tr className = 'text-base'>
+								<th>Total</th>
+								<th>200000</th>
+							</tr>
+						</thead>
 					</Table>
 			  </Col>
 			  

@@ -5,11 +5,32 @@ import OrderBook from '../components/OrderBook'
 import UserPortFolio from '../components/UserPortFolio'
 import Transactions from '../components/Transactions'
 import Graph from '../components/Graph'
+import { useSelector, useDispatch } from 'react-redux'
 import PlotlyGraph from '../components/PlotlyGraph'
-
-
+import { setUserPortfolios } from '../store/userPortfolioSlice'
+import { useEffect } from 'react'
+import NavBar from '../components/NavBar'
 
 export default function Home() {
+
+  const userPortfolios = useSelector((state) => state.userPortfolios.portfolios)
+  const dispatch = useDispatch()
+  
+  const setData = (data) => {
+    // set the data
+     dispatch(() => setUserPortfolios(data['user_portfolios']))
+  }
+
+  useEffect(() => {
+    const getAllDataURL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/get-all-data`
+    fetch(getAllDataURL)
+                .then(res => res.json())
+                .then(data => setData(data))
+                .catch((err) => console.log(err))
+  }, [])
+  
+
+
   return (
     <div className="">
       <Head>
@@ -19,12 +40,20 @@ export default function Home() {
       </Head>
 
       <main>
-        <Grid className="h-screen">
+        
+        <NavBar />
+
+        <Grid className="">
           <Col span={6}>
-            <Transactions />
+            
           </Col>
-          <Col span={6}>
-            <Transactions />
+          <Col span={3} className="flex justify-center mt-4">
+
+          <Transactions name="Transactions" />
+          </Col>
+          <Col span={3} className="flex justify-center mt-4">
+
+            <Transactions name="Notifications" />
           </Col>
           <Col span={6} className="flex justify-center h-2/5">
             <Graph />

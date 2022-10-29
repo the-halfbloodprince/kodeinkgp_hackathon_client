@@ -1,5 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit"
+import userPortfolioReducer from "./userPortfolioSlice"
 
 export const store = configureStore({
-  reducer: {},
-});
+  reducer: {
+    userPortfolios: userPortfolioReducer
+  },
+})

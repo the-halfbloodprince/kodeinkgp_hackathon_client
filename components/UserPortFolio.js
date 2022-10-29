@@ -18,9 +18,9 @@ const UserPortFolio = () => {
 			</tr>
 		));
   return (
-		<div  className='font-poppins text-2xl font-bold rounded-3xl bg-gray-800 w-3/4 p-5'>
-			<h6>User Portfolio</h6>
-			<Table>
+		<div  className='font-poppins rounded-3xl bg-gray-800 w-3/4 p-5'>
+			<h6 className = 'text-2xl font-medium'>User Portfolio</h6>
+			<Table highlightOnHover>
 				<thead>
 					<tr>
 						<th>Name</th>
