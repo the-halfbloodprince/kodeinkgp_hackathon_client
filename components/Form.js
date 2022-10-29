@@ -14,15 +14,16 @@ function Form() {
 	});
 
 	return (
+		<div className='font-poppins text-2xl font-bold rounded-3xl bg-gray-800 w-3/4 p-5'>
 		<Box sx={{ maxWidth: 300 }} mx="auto">
 			<form onSubmit={form.onSubmit((values) => console.log(values))}>
 				<Stack
 					sx={(theme) => ({
 						backgroundColor:
 							theme.colorScheme === 'dark'
-								? theme.colors.dark[8]
+								? theme.colors.gray[7]
 								: theme.colors.gray[0],
-						height: 300,
+						height: 245,
 					})}
 				>
 					<Select
@@ -55,12 +56,13 @@ function Form() {
 						<TextInput placeholder="At price" label="" withAsterisk />
 					</div>
 
-					<Group>
-						<Button type="submit">Submit</Button>
+					<Group position='center'>
+						<Button type="submit" color='cyan'>Submit</Button>
 					</Group>
 				</Stack>
 			</form>
-		</Box>
+			</Box>
+			</div>
 	);
 }
 

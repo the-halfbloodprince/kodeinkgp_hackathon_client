@@ -18,7 +18,7 @@ const UserPortFolio = () => {
 			</tr>
 		));
   return (
-		<div style={{ width: 400}}>
+		<div  className='font-poppins text-2xl font-bold rounded-3xl bg-gray-800 w-3/4 p-5'>
 			<h6>User Portfolio</h6>
 			<Table>
 				<thead>
