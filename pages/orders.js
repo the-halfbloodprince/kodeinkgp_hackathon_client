@@ -77,7 +77,7 @@ const OrderBook = () => {
 						<thead>
 							<tr className="text-base text-green">
 							<th><Text align="left"><p className="text-green">Total</p></Text></th>
-								<th><Text align="right"><p className="text-green">10000</p></Text></th>
+								<th><Text align="right"><p className="text-green"> { appData['pending_buy_orders_total'] } </p></Text></th>
 							</tr>
 						</thead>
 					</Table>
@@ -87,7 +87,7 @@ const OrderBook = () => {
 						<thead>
 						<tr className="text-base text-green">
 								<th><Text align="left"><p className="text-red">Total</p></Text></th>
-								<th><Text align="right"><p className="text-red">10000</p></Text></th>
+								<th><Text align="right"><p className="text-red"> { appData['pending_sell_orders_total'] } </p></Text></th>
 							</tr>
 						</thead>
 					</Table>

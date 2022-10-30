@@ -21,20 +21,21 @@ const NavBar = () => {
 					router.push('/');
 				}}
 			>
-				Akatsuki
+				<span>Akat</span><span className='hover:text-[#21e185] transition duration-500'>suki</span>
 			</div>
-			<div className="flex space-x-10 items-center text-lg">
+			<div className="flex space-x-4 items-center text-lg">
 				{/* dowpdown */}
 				<Select
 					label=""
+					className='focus:outline-none'
 					placeholder="Select Page"
 					onChange={(route) => router.push(route)}
 					data={[
-						{ value: '/', label: 'Dashboard' },
-						{ value: '/orders', label: 'Orders' },
-						{ value: '/userportfolio', label: 'User Portfolios' },
-						{ value: '/update_user', label: 'Update User' },
-						{ value: '/add_user', label: 'Add User' },
+						{ value: '/', label: 'Dashboard', group: 'Dashboards' },
+						{ value: '/orders', label: 'Orders', group: 'Tables' },
+						{ value: '/userportfolio', label: 'User Portfolios', group: 'Tables' },
+						{ value: '/update_user', label: 'Update User', group: 'User Operations' },
+						{ value: '/add_user', label: 'Add User', group: 'User Operations' },
 					]}
 				/>
 				{/* <Link href="/transactions"> */}

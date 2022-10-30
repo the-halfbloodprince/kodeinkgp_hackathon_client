@@ -81,6 +81,14 @@ function Form() {
 				// sorting the market prices
 				data['market_prices'].sort((price1, price2) => (price1['datetime'] - price2['datetime']))
 				
+				let pending_buy_orders_total = 0
+                data['pending_buy_orders'].forEach(order => pending_buy_orders_total += (order['price'] * order['quantity']))
+                data['pending_buy_orders_total'] = pending_buy_orders_total
+                
+                let pending_sell_orders_total = 0
+                data['pending_sell_orders'].forEach(order => pending_sell_orders_total += (order['price'] * order['quantity']))
+                data['pending_sell_orders_total'] = pending_sell_orders_total
+
 				// getting the current market price
 				const x = data['market_prices'].at(-1)
 				data['current_market_price'] = x['price']
@@ -131,7 +139,7 @@ function Form() {
 		<div className="font-poppins text-2xl font-bold rounded-3xl bg-gray-800 border-[1px] w-3/4 p-5">
 			{/* {orderType} */}
 
-			<Box sx={{ maxWidth: 300 }} mx="auto">
+			<Box className='px-10' mx="auto">
 				<form onSubmit={form.onSubmit((values) => submitValues(values))}>
 					<Stack
 						spacing="xs"
@@ -200,6 +208,7 @@ function Form() {
 									color="blue"
 									fullWidth
 									className="bg-[#0c8ce9]"
+									// className="bg-[#21e185]"
 								>
 									Place Order
 								</Button>

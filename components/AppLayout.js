@@ -39,6 +39,14 @@ const AppLayout = ({ children }) => {
 					(price1, price2) => price1['datetime'] - price2['datetime']
 				);
 
+                let pending_buy_orders_total = 0
+                data['pending_buy_orders'].forEach(order => pending_buy_orders_total += (order['price'] * order['quantity']))
+                data['pending_buy_orders_total'] = pending_buy_orders_total
+                
+                let pending_sell_orders_total = 0
+                data['pending_sell_orders'].forEach(order => pending_sell_orders_total += (order['price'] * order['quantity']))
+                data['pending_sell_orders_total'] = pending_sell_orders_total
+
 				// getting the current market price
 				const x = data['market_prices'].at(-1);
 				data['current_market_price'] = x['price'];

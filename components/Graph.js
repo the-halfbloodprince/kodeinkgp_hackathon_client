@@ -19,7 +19,7 @@ const Graph = () => {
 
 
 	return (
-		<div className="font-poppins font-bold rounded-3xl border-[1px] bg-[#21e185] w-3/4 p-5 overflow-hidden flex flex-col text-end">
+		<div className="font-poppins font-bold rounded-3xl border-[1px] bg-[#21e185] h-[45vh] w-3/4 p-5 overflow-hidden flex flex-col text-end">
 			<p className="text-xs text-black">Current Market Price</p>
 			<p className="text-4xl  text-black"> $ {currentMarketPrice}</p>
 			<PlotlyGraph />

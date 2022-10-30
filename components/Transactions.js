@@ -4,14 +4,6 @@ import { Drawer, Button, Group ,Table} from '@mantine/core';
 import UserPortFolio from './UserPortFolio';
 import { useSelector } from 'react-redux';
 
-const TRANS_VALS = [
-	{ buyer: 'User1', seller: 'User1', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User2', seller: 'User2', quantity: 100, price: 5000, time: '10:20', },
-	{ buyer: 'User3', seller: 'User3', quantity: 100, price: 5000, time: '10:20', },
-	
-	
-];
-
 const Transactions = ({ toShow }) => {
 
 	const appData = useSelector(state => state.appData.data)
@@ -44,7 +36,7 @@ const Transactions = ({ toShow }) => {
 				onClose={() => setOpened(false)}
 				title="Transaction History"
 				padding="xl"
-				size="50%"
+				size="45%"
 			>
 				{
 					<div>
@@ -65,7 +57,7 @@ const Transactions = ({ toShow }) => {
 			</Drawer>
 
 			<Group position="right">
-				<Button className = 'bg-[#ffffff22]' color="violet" onClick={() => setOpened(true)} > { toShow } </Button>
+				<Button className = 'bg-[#0c8ce9]' color="#0c8ce9" onClick={() => setOpened(true)} > { toShow } </Button>
 			</Group>
 		</div>
 	);

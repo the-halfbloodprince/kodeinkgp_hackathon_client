@@ -34,7 +34,7 @@ const OrderBook = () => {
 		</tr>
 	));
   return (
-		<div className='font-poppins font-bold rounded-3xl bg-gray-800 border-[1px] w-3/4 p-8 h-full'>
+		<div className='font-poppins font-bold rounded-3xl bg-gray-800 border-[1px] w-3/4 p-8 h-[45vh]'>
 				<h6 className = 'text-2xl font-medium'>Order Book</h6>
 			<Grid>
 				<Col span={6}>
@@ -69,7 +69,7 @@ const OrderBook = () => {
 						<thead>
 							<tr className = 'text-base'>
 								<th>Total</th>
-								<th>100000</th>
+								<th>{ data['pending_buy_orders_total'] }</th>
 							</tr>
 						</thead>
 					</Table>
@@ -80,7 +80,7 @@ const OrderBook = () => {
 						<thead>
 							<tr className = 'text-base'>
 								<th>Total</th>
-								<th>200000</th>
+								<th>{ data['pending_sell_orders_total'] }</th>
 							</tr>
 						</thead>
 					</Table>
