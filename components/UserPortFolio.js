@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 const UserPortFolio = () => {
 	const data = useSelector((state) => state.appData.data);
-    const rows = data['user_portfolios'].slice(0,4).map((element) => (
+    const rows = data['user_portfolios'].slice(0,5).map((element) => (
 			<tr key={element.id}>
 				<td>{element.user_name}</td>
 				<td>{element.stocks}</td>
@@ -14,7 +14,7 @@ const UserPortFolio = () => {
 		));
   return (
 		<div className="font-poppins rounded-3xl bg-gray-800 w-3/4 p-5 border-[1px]">
-			<h6 className="text-2xl font-medium">User Portfolio</h6>
+			<h6 className="text-2xl font-medium text-center mb-4">User Portfolio</h6>
 			<Table highlightOnHover>
 				<thead>
 					<tr>

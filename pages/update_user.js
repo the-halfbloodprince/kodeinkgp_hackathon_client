@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // import axios from 'axios'
 import { useRouter } from 'next/router'
 import { Notification } from '@mantine/core';
-import { IconCheck, IconX } from '@tabler/icons'
+import { IconCheck, IconX, IconDatabase } from '@tabler/icons'
 import { setData } from '../store/appDataSlice'
 import { showNotification, hideNotification } from '@mantine/notifications';
 import { Timestamp } from 'firebase/firestore'
@@ -37,6 +37,7 @@ const UpdateUser = () => {
 				id: 'updated-user-notif',
 				title: 'Updated user',
 				message: 'Hey there, updated the user! 🤥',
+				icon: <IconCheck />
 				// loading: true
 			})
 
@@ -106,6 +107,7 @@ const UpdateUser = () => {
 				id: 'data-loaded',
 				title: 'updated data loaded from server',
 				message: 'data loaded from server',
+				icon: <IconCheck />
 			})
 
 			router.push('/')
@@ -116,6 +118,7 @@ const UpdateUser = () => {
 				id: 'failed-update-notif',
 				title: 'Failed to update the user',
 				message: 'Hey there, failed to update the user! 🤥',
+				icon: <IconX />
 				// loading: true
 			})
 

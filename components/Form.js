@@ -48,7 +48,13 @@ function Form() {
 			price: values.price
 		}
 
-		const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${values.mode}`, reqBody)
+		let res
+
+		try {
+			res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${values.mode}`, reqBody)
+		} catch (e) {
+			console.log(e)
+		}
 
 		console.log(res.status)
 		console.log(res.data)
@@ -61,6 +67,7 @@ function Form() {
 				id: 'added-order-notif',
 				title: 'Added your order',
 				message: 'Hey there, added your order! 🤥',
+				icon: <IconCheck />
 				// loading: true
 			})
 
@@ -105,12 +112,33 @@ function Form() {
 				dispatch(setData(data))
 			})
 				
+		} else if (res.status == 401) {
+
+			showNotification({
+				id: 'insufficient-fund',
+				title: 'Insufficient fund',
+				message: 'Hey there, failed to add your order! 🤥',
+				icon: <IconX />
+				// loading: true
+			})
+			
+		} else if (res.status == 402) {
+			
+			showNotification({
+				id: 'insufficient-stocks',
+				title: 'Insufficient stocks',
+				message: 'Hey there, failed to add your order! 🤥',
+				icon: <IconX />
+				// loading: true
+			})
+
 		} else {
 			
 			showNotification({
 				id: 'failed-order-notif',
 				title: 'Failed to add your order',
 				message: 'Hey there, failed to add your order! 🤥',
+				icon: <IconX />
 				// loading: true
 			})
 
@@ -138,6 +166,8 @@ function Form() {
 	return (
 		<div className="font-poppins text-2xl font-bold rounded-3xl bg-gray-800 border-[1px] w-3/4 p-5">
 			{/* {orderType} */}
+
+			<div className='mb-4 text-2xl font-medium text-center '>Add Order</div>
 
 			<Box className='px-10' mx="auto">
 				<form onSubmit={form.onSubmit((values) => submitValues(values))}>

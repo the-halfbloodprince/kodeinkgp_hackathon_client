@@ -51,6 +51,7 @@ const AddUser = () => {
 				id: 'added-user-notif',
 				title: 'Added user',
 				message: 'Hey there, added the user! 🤥',
+				icon: <IconCheck />
 				// loading: true
 			})
 
@@ -120,6 +121,7 @@ const AddUser = () => {
 				id: 'data-loaded',
 				title: 'updated data loaded from server',
 				message: 'data loaded from server',
+				icon: <IconCheck />
 			})
 
 			router.push('/')
@@ -130,6 +132,7 @@ const AddUser = () => {
 				id: 'failed-user-notif',
 				title: 'Failed to add your user',
 				message: 'Hey there, failed to add your user! 🤥',
+				icon: <IconX />
 				// loading: true
 			})
 

@@ -1,18 +1,31 @@
 import React, { useEffect, useState } from 'react'
 import NavBar from './NavBar'
 import axios from 'axios'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Timestamp } from 'firebase/firestore';
 import { setData } from '../store/appDataSlice'
+import Footer from '../components/Footer'
+import { setLoading } from '../store/loadingSlice';
+
+const Loading = () => {
+	return (
+		<div>Loading...</div>
+	)
+}
 
 const AppLayout = ({ children }) => {
   
+	const loading = useSelector(state => state.loading.value)
+
+	// console.log(loading)
+
     const dispatch = useDispatch()
 
     const [error, setError] = useState(false);
 
 	useEffect(() => {
 		console.log('use effect');
+		console.log(loading);
 		axios
 			.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/get-all-data`)
 			.then((res) => {
@@ -65,6 +78,8 @@ const AppLayout = ({ children }) => {
 				);
 
 				dispatch(setData(data));
+
+				dispatch(setLoading(false))
 			});
 	}, []);
     
@@ -72,7 +87,9 @@ const AppLayout = ({ children }) => {
     return (
         <div>
             <NavBar />
+            {/* { loading ? children : <Loading /> } */}
             { children }
+			{/* <Footer /> */}
         </div>
   )
 }

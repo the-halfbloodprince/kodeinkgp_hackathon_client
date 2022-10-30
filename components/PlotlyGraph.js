@@ -45,6 +45,9 @@ const PlotlyGraph = () => {
 					height: '200',
 					modebar: { remove: [] },
 				}}
+				config = {{
+					displayModeBar: false
+				}}
 			/>
 		</div>
 	);

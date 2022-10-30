@@ -35,7 +35,7 @@ const OrderBook = () => {
 	));
   return (
 		<div className='font-poppins font-bold rounded-3xl bg-gray-800 border-[1px] w-3/4 p-8 h-[45vh]'>
-				<h6 className = 'text-2xl font-medium'>Order Book</h6>
+				<h6 className = 'text-2xl font-medium text-center mb-4'>Order Book</h6>
 			<Grid>
 				<Col span={6}>
 				  <h6 className = 'text-base font-bold text-cyanBlue'>Buy</h6>

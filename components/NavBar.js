@@ -12,6 +12,18 @@ const NavBar = () => {
 
     // const dispatch = useDispatch()
 
+	const mode1 = (
+		<div>
+			
+		</div>
+	)
+
+	const mode2 = (
+		<div>
+
+		</div>
+	)
+
   return (
 		<div className="w-full px-48 h-20 mb-4 mt-4 flex justify-between items-center font-mono ">
 			<div
@@ -21,7 +33,8 @@ const NavBar = () => {
 					router.push('/');
 				}}
 			>
-				<span>Akat</span><span className='hover:text-[#21e185] transition duration-500'>suki</span>
+				<span>Stock</span><span className='hover:text-[#21e185] transition duration-500'>Lift</span>
+				<span className='text-[#888]'> - by Team Akatsuki</span>
 			</div>
 			<div className="flex space-x-4 items-center text-lg">
 				{/* dowpdown */}
