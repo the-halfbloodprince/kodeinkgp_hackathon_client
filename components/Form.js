@@ -1,43 +1,119 @@
 import { TextInput, Checkbox, Button, Group, Box,Select,Stack ,Space, MantineProvider} from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
 import axios from 'axios'
+import { Notification } from '@mantine/core';
+import { IconCheck, IconX } from '@tabler/icons'
+import { setData } from '../store/appDataSlice'
+import { showNotification, hideNotification } from '@mantine/notifications';
+import { Timestamp } from 'firebase/firestore'
 
 function Form() {
 
 	const appData = useSelector(state => state.appData.data)
 
 	const [orderType, setOrderType] = useState('limit')
+	const dispatch = useDispatch()
 
-	const submitValues = (values) => {
+	const submitValues = async (values) => {
 
 		// console.log(values)
 		// validate the quantity > 0, price > 0
 		// if (quantity <= 0 || price <= 0) {
-		// 	// thwor error
+			
+		// 	showNotification({
+		// 		id: 'invalid-input',
+		// 		title: 'invalid input',
+		// 		message: 'Hey there, invalid input! 🤥',
+		// 		// loading: true
+		// 	})
+
 		// 	return
 		// }
 
-		try {
-			if (values.order_type === 'limit') {
-				axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${values.mode}`, {
-					user_id: values.user_id,
-					order_type: values.order_type, 
-					quantity: values.quantity,
-					price: values.price
-				})
-			} else {
-				axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${values.mode}`, {
-					user_id: values.user_id,
-					order_type: values.order_type, 
-					quantity: values.quantity,
-					price: values.price
-				})
-			}
-		} catch (e) {
-			console.log(e)
+		showNotification({
+			id: 'adding-order-notif',
+            title: 'Adding your order',
+            message: 'Hey there, adding your order! 🤥',
+			loading: true
+		})
+
+		let data
+
+		const reqBody = {
+			user_id: values.user_id,
+			order_type: values.order_type, 
+			quantity: values.quantity,
+			price: values.price
 		}
+
+		const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/${values.mode}`, reqBody)
+
+		console.log(res.status)
+		console.log(res.data)
+
+		hideNotification('adding-order-notif')
+
+		if (res.status >= 200 && res.status < 300) {
+			
+			showNotification({
+				id: 'added-order-notif',
+				title: 'Added your order',
+				message: 'Hey there, added your order! 🤥',
+				// loading: true
+			})
+
+			// fetch data
+			axios
+				.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/get-all-data`)
+				.then(res => {
+				const data = res.data
+		
+				// // extracting the list of user names
+				// data['user_portfolios'].forEach(price)
+		
+				// convert market prices to datetime
+				data['market_prices'].forEach((price, idx) => {
+					data['market_prices'][idx]['datetime'] = (new Timestamp(price['datetime']['_seconds'], price['datetime']['_nanoseconds'])).toDate()
+				})
+		
+				// sorting the market prices
+				data['market_prices'].sort((price1, price2) => (price1['datetime'] - price2['datetime']))
+				
+				// getting the current market price
+				const x = data['market_prices'].at(-1)
+				data['current_market_price'] = x['price']
+				
+				// convert transaction to datetime
+				data['transactions'].forEach((trans, idx) => {
+					data['transactions'][idx]['datetime'] = (new Timestamp(trans['datetime']['_seconds'], trans['datetime']['_nanoseconds'])).toDate()
+				})
+		
+				// sorting the market prices
+				data['transactions'].sort((trans1, trans2) => -(trans1['datetime'] - trans2['datetime']))
+				
+		
+				dispatch(setData(data))
+			})
+				
+		} else {
+			
+			showNotification({
+				id: 'failed-order-notif',
+				title: 'Failed to add your order',
+				message: 'Hey there, failed to add your order! 🤥',
+				// loading: true
+			})
+
+		}
+
+		// setTimeout(() => {
+		// }, 2000);
+
+
+
+		
 
 	}
 
@@ -54,6 +130,7 @@ function Form() {
 	return (
 		<div className='font-poppins text-2xl font-bold rounded-3xl bg-gray-800 w-3/4 p-5'>
 		{/* {orderType} */}
+
 		<Box sx={{ maxWidth: 300 }} mx="auto">
 			<form onSubmit={form.onSubmit((values) => submitValues(values))}>
 				<Stack spacing = 'xs'
@@ -96,8 +173,8 @@ function Form() {
 						// }}
 						// ={setOrderType}
 						data={[
-							{ value: 'limit', label: 'Limit' },
-							{ value: 'market', label: 'Market' },
+							{ value: 'Limit', label: 'Limit' },
+							{ value: 'Market', label: 'Market' },
 						]}
 						{...form.getInputProps('order_type')}
 					/>

@@ -3,6 +3,8 @@ import '../styles/globals.css'
 import { Provider } from "react-redux";
 import { store } from "../store";
 import NavBar from '../components/NavBar';
+import { NotificationsProvider } from '@mantine/notifications';
+import AppLayout from '../components/AppLayout';
 
 function MyApp({ Component, pageProps }) {
   
@@ -13,8 +15,12 @@ function MyApp({ Component, pageProps }) {
         withNormalizeCSS
         theme={{ colorScheme: "dark" }}
       >
-        <NavBar />
-        <Component {...pageProps} />
+        <NotificationsProvider>
+          {/* <NavBar /> */}
+          <AppLayout>
+            <Component {...pageProps} />
+          </AppLayout>
+        </NotificationsProvider>
       </MantineProvider>
     </Provider>
   );

@@ -17,7 +17,8 @@ const Transactions = ({ toShow }) => {
 	const appData = useSelector(state => state.appData.data)
 	const transactions = appData['transactions']
 
-	// console.log(transactions.length)
+	console.log(transactions)
+	console.log(appData['userIdToName'])
 	
     const [opened, setOpened] = useState(false);
 	
@@ -25,6 +26,9 @@ const Transactions = ({ toShow }) => {
 			<tr key={element.id}>
 				<td>{element.buyer}</td>
 				<td>{element.seller}</td>
+				{/* <td>{appData['userIdToName'][element.buyer]}</td>
+				<td>{appData['userIdToName'][element.seller]}</td> */}
+				{/* <td>{appData['user_portfolios'][element.buyer]['name']}</td> */}
 				<td>{element.quantity}</td>
 				<td>{element.price}</td>
 				{/* <td>{element.time}</td> */}
@@ -35,12 +39,12 @@ const Transactions = ({ toShow }) => {
   return (
 		<div>
 			<Drawer position='right'
-				className="overflow-scroll"
+				className="overflow-scroll px-2"
 				opened={opened}
 				onClose={() => setOpened(false)}
 				title="Transaction History"
 				padding="xl"
-				size="xl"
+				size="50%"
 			>
 				{
 					<div>
