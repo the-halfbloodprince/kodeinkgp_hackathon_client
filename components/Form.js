@@ -32,7 +32,7 @@ function Form() {
 					user_id: values.user_id,
 					order_type: values.order_type, 
 					quantity: values.quantity,
-					// price: values.price
+					price: values.price
 				})
 			}
 		} catch (e) {
