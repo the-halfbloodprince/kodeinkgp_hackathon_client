@@ -15,7 +15,7 @@ const NavBar = () => {
   return (
 		<div className="w-full px-48 h-20 mb-4 mt-4 flex justify-between items-center font-mono ">
 			<div
-				className="text-white text-3xl"
+				className="text-white text-3xl font-black cursor-pointer" 
 				onClick={(e) => {
 					e.preventDefault();
 					router.push('/');

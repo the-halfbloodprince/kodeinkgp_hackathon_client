@@ -20,65 +20,7 @@ export default function Home() {
 	const appData = useSelector((state) => state.appData);
 	const dispatch = useDispatch();
     const router = useRouter();
-	const [error, setError] = useState(false);
-
-	// const setDataInStore = (data) => {
-	//   // set the data
-	//   console.log('Setting data')
-	//   console.log(data)
-	//   dispatch(() => setData(data))
-	// }
-
-	useEffect(() => {
-		console.log('use effect');
-		axios
-			.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/get-all-data`)
-			.then((res) => {
-				const data = res.data;
-
-				// // extracting the list of user names
-
-				const userIdToName = {};
-
-				data['user_portfolios'].forEach((user) => {
-					userIdToName[user.id] = user.user_name;
-				});
-
-				data['userIdToName'] = userIdToName;
-
-				// convert market prices to datetime
-				data['market_prices'].forEach((price, idx) => {
-					data['market_prices'][idx]['datetime'] = new Timestamp(
-						price['datetime']['_seconds'],
-						price['datetime']['_nanoseconds']
-					).toDate();
-				});
-
-				// sorting the market prices
-				data['market_prices'].sort(
-					(price1, price2) => price1['datetime'] - price2['datetime']
-				);
-
-				// getting the current market price
-				const x = data['market_prices'].at(-1);
-				data['current_market_price'] = x['price'];
-
-				// convert transaction to datetime
-				data['transactions'].forEach((trans, idx) => {
-					data['transactions'][idx]['datetime'] = new Timestamp(
-						trans['datetime']['_seconds'],
-						trans['datetime']['_nanoseconds']
-					).toDate();
-				});
-
-				// sorting the market prices
-				data['transactions'].sort(
-					(trans1, trans2) => -(trans1['datetime'] - trans2['datetime'])
-				);
-
-				dispatch(setData(data));
-			});
-	}, []);
+	
 
 	console.log('njk');
 	console.log(appData);
@@ -111,7 +53,7 @@ export default function Home() {
 
 					<Col
 						span={6}
-						className="flex justify-start h-2/5"
+						className="flex justify-start h-2/5 cursor-pointer"
 						onClick={(e) => {
 							e.preventDefault();
 							router.push('/orders');
@@ -121,7 +63,7 @@ export default function Home() {
 					</Col>
 					<Col
 						span={6}
-						className="flex justify-end h-2/5"
+						className="flex justify-end h-2/5 cursor-pointer"
 						onClick={(e) => {
 							e.preventDefault();
 							router.push('/userportfolio');
