@@ -34,7 +34,7 @@ const OrderBook = () => {
 		</tr>
 	));
   return (
-		<div className='font-poppins  font-bold rounded-3xl bg-gray-800 w-3/4 p-8 h-full'>
+		<div className='font-poppins font-bold rounded-3xl bg-gray-800 border-[1px] w-3/4 p-8 h-full'>
 				<h6 className = 'text-2xl font-medium'>Order Book</h6>
 			<Grid>
 				<Col span={6}>

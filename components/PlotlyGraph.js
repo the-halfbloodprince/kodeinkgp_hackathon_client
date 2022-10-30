@@ -34,12 +34,14 @@ const PlotlyGraph = () => {
 			<Plot
 				data={data}
 				layout={{
-					// paper_bgcolor: '#9168e9',
-					// plot_bgcolor: '#9168e9',
-					plot_bgcolor: '#1A1B1E',
-					paper_bgcolor: '#1A1B1E',
+					plot_bgcolor: '#21e185',
+					paper_bgcolor: '#21e185',
+
+					// plot_bgcolor: '#1A1B1E',
+					// paper_bgcolor: '#1A1B1E',
+
 					margin: { l: '0', r: '0', t: '0', b: '35' },
-					width: '400',
+					width: '500',
 					height: '200',
 					modebar: { remove: [] },
 				}}

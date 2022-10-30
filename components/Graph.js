@@ -19,12 +19,12 @@ const Graph = () => {
 
 
 	return (
-		<div className='font-poppins font-bold rounded-3xl border-2 bg-[#1A1B1E] w-3/4 p-5 overflow-hidden flex flex-col text-end'>
-			<p className = 'text-xs'>Current Market Price</p>
-			<p className = 'text-2xl'> $ {currentMarketPrice}</p>
-			<PlotlyGraph/>
+		<div className="font-poppins font-bold rounded-3xl border-[1px] bg-[#21e185] w-3/4 p-5 overflow-hidden flex flex-col text-end">
+			<p className="text-xs text-black">Current Market Price</p>
+			<p className="text-4xl  text-black"> $ {currentMarketPrice}</p>
+			<PlotlyGraph />
 		</div>
-  );
+	);
 };
 
 const Loading = () => {

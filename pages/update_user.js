@@ -31,7 +31,10 @@ const UpdateUser = () => {
 	console.log(userrs)
 
 	return (
-		<div className="mx-48 h-screen flex space-x-10">
+		<div className="w-screen h-[85vh] flex px-56">
+			{/* add user */}
+			<div className='w-2/3 flex flex-col justify-center px-10 space-y-10'>
+				<div className='text-5xl font-mono'>Update User</div>
 			<form
 				onSubmit={form2.onSubmit((values) => {
 					console.log(values);
@@ -90,6 +93,10 @@ const UpdateUser = () => {
 					</MantineProvider>
 				</Stack>
 			</form>
+			</div>
+			<div className='right-pane right-pane-2 rounded-xl'>
+
+			</div>
 		</div>
 	);
 }

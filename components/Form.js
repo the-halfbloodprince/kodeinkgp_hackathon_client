@@ -1,4 +1,4 @@
-import { TextInput, Checkbox, Button, Group, Box,Select,Stack ,Space, MantineProvider} from '@mantine/core';
+import { TextInput, Checkbox, Button, Group, Box,Select,Stack ,Space, MantineProvider,NumberInput} from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
@@ -128,71 +128,87 @@ function Form() {
 	});
 
 	return (
-		<div className='font-poppins text-2xl font-bold rounded-3xl bg-gray-800 w-3/4 p-5'>
-		{/* {orderType} */}
+		<div className="font-poppins text-2xl font-bold rounded-3xl bg-gray-800 border-[1px] w-3/4 p-5">
+			{/* {orderType} */}
 
-		<Box sx={{ maxWidth: 300 }} mx="auto">
-			<form onSubmit={form.onSubmit((values) => submitValues(values))}>
-				<Stack spacing = 'xs'
-					sx={(theme) => ({
-						backgroundColor:
-							theme.colorScheme === 'dark'
-								? '#00000'
-								: theme.colors.gray[0],
-						height: 220,
-					})}
-				>
-					<Select
-						label=""
-						// placeholder="Buy"
-						data={[
-							{ value: 'buy', label: 'Buy' },
-							{ value: 'sell', label: 'Sell' },
-						]}
-						{...form.getInputProps('mode')}
-						
-					/>
-					<Select
-						label=""
-						placeholder="Select User"
-						data={ 
-							appData['user_portfolios'].map(portfolio => (
-								{
-									value: portfolio.id,
-									label: portfolio.user_name
-								}
-							)) 
-						}
-						{...form.getInputProps('user_id')}
-					/>
-					<Select
-						label=""
-						placeholder="Order Type"
-						// onChange={(e) => {
-						// 	console.log(e)
-						// }}
-						// ={setOrderType}
-						data={[
-							{ value: 'Limit', label: 'Limit' },
-							{ value: 'Market', label: 'Market' },
-						]}
-						{...form.getInputProps('order_type')}
-					/>
-					<div style={{display:'flex'}}>
-                        <TextInput placeholder="Quantity" label="" withAsterisk type='number' {...form.getInputProps('quantity')} />
-                        <Space w="md"/>
-						<TextInput placeholder="At price" label="" withAsterisk type='number' {...form.getInputProps('price')} />
-					</div>
+			<Box sx={{ maxWidth: 300 }} mx="auto">
+				<form onSubmit={form.onSubmit((values) => submitValues(values))}>
+					<Stack
+						spacing="xs"
+						sx={(theme) => ({
+							backgroundColor:
+								theme.colorScheme === 'dark' ? '#00000' : theme.colors.gray[0],
+							height: 220,
+						})}
+					>
+						<Select
+							label=""
+							// placeholder="Buy"
+							data={[
+								{ value: 'buy', label: 'Buy' },
+								{ value: 'sell', label: 'Sell' },
+							]}
+							{...form.getInputProps('mode')}
+						/>
+						<Select
+							label=""
+							placeholder="Select User"
+							data={appData['user_portfolios'].map((portfolio) => ({
+								value: portfolio.id,
+								label: portfolio.user_name,
+							}))}
+							{...form.getInputProps('user_id')}
+						/>
+						<Select
+							label=""
+							placeholder="Order Type"
+							// onChange={(e) => {
+							// 	console.log(e)
+							// }}
+							// ={setOrderType}
+							data={[
+								{ value: 'Limit', label: 'Limit' },
+								{ value: 'Market', label: 'Market' },
+							]}
+							{...form.getInputProps('order_type')}
+						/>
+						<div style={{ display: 'flex' }}>
+							<NumberInput
+								placeholder="Quantity"
+								label=""
+								defaultValue={0}
+								withAsterisk
+								type="number"
+								{...form.getInputProps('quantity')}
+							/>
+							<Space w="md" />
+							<NumberInput
+								placeholder="At price"
+								label=""
+								defaultValue={0}
+								withAsterisk
+								type="number"
+								{...form.getInputProps('price')}
+							/>
+						</div>
 
-					<MantineProvider theme = {{primaryShade:{dark:8}}}>
-					<Group position='center'>
-						<Button type="submit" variant = "filled" color = "blue" fullWidth className = 'bg-[#0c8ce9]'>Place Order</Button>
-					</Group>
-					</MantineProvider>
-				</Stack>
-			</form>
+						<MantineProvider theme={{ primaryShade: { dark: 8 } }}>
+							<Group position="center">
+								<Button
+									type="submit"
+									variant="filled"
+									color="blue"
+									fullWidth
+									className="bg-[#0c8ce9]"
+								>
+									Place Order
+								</Button>
+							</Group>
+						</MantineProvider>
+					</Stack>
+				</form>
 			</Box>
-			</div>
+		</div>
 	);
 }
 
