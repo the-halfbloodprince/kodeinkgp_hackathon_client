@@ -27,6 +27,7 @@ const PlotlyGraph = () => {
 			x: x,
 			y: y,
 			type: 'scatter',
+			line: {color: '#fff'}
 		},
 	];
 	return (
@@ -34,8 +35,10 @@ const PlotlyGraph = () => {
 			<Plot
 				data={data}
 				layout={{
-					plot_bgcolor: '#21e185',
-					paper_bgcolor: '#21e185',
+					// plot_bgcolor: '#21e185',
+					// paper_bgcolor: '#21e185',
+					plot_bgcolor: '#0c8ce9',
+					paper_bgcolor: '#0c8ce9',
 
 					// plot_bgcolor: '#1A1B1E',
 					// paper_bgcolor: '#1A1B1E',
