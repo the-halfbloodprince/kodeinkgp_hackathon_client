@@ -33,7 +33,7 @@ const NavBar = () => {
 					router.push('/');
 				}}
 			>
-				<span>Stock</span><span className='hover:text-[#21e185] transition duration-500'>Lift</span>
+				<span>Stock</span><span className='hover:text-[#0c8ce9] transition duration-500'>Lift</span>
 				<span className='text-[#888]'> - by Team Akatsuki</span>
 			</div>
 			<div className="flex space-x-4 items-center text-lg">

@@ -89,7 +89,7 @@ const AppLayout = ({ children }) => {
             <NavBar />
             {/* { loading ? children : <Loading /> } */}
             { children }
-			{/* <Footer /> */}
+			<Footer />
         </div>
   )
 }
