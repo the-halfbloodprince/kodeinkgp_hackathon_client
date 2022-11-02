@@ -1,10 +1,13 @@
+import axios from 'axios'
 import React from 'react'
 import CardSkeleton from '../components/CardSkeleton'
 
 const Test = () => {
+
+
   return (
     <div className='p-6'>
-      <CardSkeleton />
+      <button onClick={sendData}></button>
     </div> 
   )
 }
