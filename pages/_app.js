@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
       <MantineProvider
         withGlobalStyles
         withNormalizeCSS
-        theme={{ colorScheme: "light" }}
+        theme={{ colorScheme: "dark" }}
       >
         <NotificationsProvider>
           {/* <NavBar /> */}
